@@ -1,15 +1,10 @@
-name "db_master"
-description "Master database server"
-
+...
 all_env = [
+
   "role[base]",
-  "recipe[yoursql]"
+  "recipe[yoursql]",
+  "recipe[php]",
+  "recipe[php::module_mysql]",
+  "recipe[dbuser::default]"
 ]
-
-run_list(all_env)
-
-env_run_lists(
-  "_default" => all_env,
-  "prod" => all_env,
-  "dev" => all_env,
-)
+...
